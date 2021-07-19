@@ -120,9 +120,22 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products that cost less than £1000
 
-// const cheapProducts = function();
+function filterCheapProducts(products) {
+  const filteredProducts = [];
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    const price = product.price;
 
-// console.log("cheapProducts: ", cheapProducts);
+    if (price < 1000) {
+      filteredProducts.push(product);
+    }
+  }
+  return filteredProducts;
+}
+
+const cheapProducts = filterCheapProducts(store.products);
+
+console.log("cheapProducts: ", cheapProducts);
 
 // ----- Section ----- **
 
@@ -154,7 +167,22 @@ console.log("productsThatNeedToBeReceived: ", productsThatNeedToBeReceived);
 // - that takes an array as a parameter
 // - returns an array of products that are out of stock
 
-// const outOfStockProducts = function();
+function filterOutOfStockProducts(products) {
+  const filteredProducts = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    const quantity = product.stock.quantity;
+
+    if (quantity === 0) {
+      filteredProducts.push(product);
+    }
+  }
+  return filteredProducts;
+}
+
+const outOfStockProducts = filterOutOfStockProducts(store.products);
+console.log("outOfStockProducts: ", outOfStockProducts);
 
 // ----- Section -----
 
@@ -162,7 +190,25 @@ console.log("productsThatNeedToBeReceived: ", productsThatNeedToBeReceived);
 // - that takes an array as a parameter
 // - returns an array of products that have a quantity that is less than 100 and have no incoming delivery
 
-// const productsThatNeedToBeOrdered = function();
+function filterProductsThatNeedToBeOrdered(products) {
+  const filteredProducts = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    if (
+      product.stock.quantity < 100 &&
+      product.stock.incomingDelivery === false
+    ) {
+      filteredProducts.push(product);
+    }
+  }
+  return filteredProducts;
+}
+
+const productsThatNeedToBeOrdered = filterProductsThatNeedToBeOrdered(
+  store.products
+);
+console.log("productsThatNeedToBeOrdered: ", productsThatNeedToBeOrdered);
 
 // ----- Section ----- **
 
@@ -193,7 +239,22 @@ console.log("tablets: ", tablets);
 // - that takes an array as a parameter
 // - returns an array of products of the type "computer"
 
-// const computers = function();
+function filterComputers(products) {
+  const filteredProducts = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    const type = product.type;
+
+    if (type === "computer") {
+      filteredProducts.push(product);
+    }
+  }
+  return filteredProducts;
+}
+
+const computers = filterComputers(store.products);
+console.log("computers: ", computers);
 
 // ----- Section ----- **
 
@@ -201,6 +262,7 @@ console.log("tablets: ", tablets);
 // - that takes an array as a parameter
 // - returns an object that represents an "iMac"
 
+// challenge: to make reusable function (done on the session)
 function findProduct(products, productToFind) {
   let foundProduct = {};
 
@@ -223,15 +285,45 @@ console.log("iMac: ", iMac);
 // - that takes an array as a parameter
 // - returns an object that represents an "iPhone 12"
 
+function findIPhone12(products) {
+  let foundProduct = {};
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+
+    if (product.name === "iPhone 12") {
+      foundProduct = product;
+    }
+  }
+  return foundProduct;
+}
+
+const iPhone12 = findIPhone12(store.products);
+console.log("iPhone12: ", iPhone12);
+
 // const iPhone12 = function();
 
 // ----- Section -----
 
 // Write a function here...
 // - that takes an array as a parameter
-// - returns an object that represents an "iPad Mini"
+// - returns an object that represents an "iPad mini"
 
-// const iPadMini = function();
+function findIPadMini(products) {
+  let foundProduct = {};
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+
+    if (product.name === "iPad mini") {
+      foundProduct = product;
+    }
+  }
+  return foundProduct;
+}
+
+const iPadMini = findIPadMini(store.products);
+console.log("iPadMini: ", iPadMini);
 
 // ----- CHALLENGE -----
 
@@ -240,7 +332,31 @@ console.log("iMac: ", iMac);
 // - returns an array of unique product types
 //    => ["mobile", "computer", "tablet"]
 
-// const productTypes = function();
+function filterUniqueProductTypes(products) {
+  const filteredProducts = [];
+
+  for (let i = 0; i < store.products.length; i++) {
+    const product = store.products[i];
+    const type = product.type;
+
+    /* for loop to check if the product type exists */
+    let typeExists = false;
+
+    for (let j = 0; j < filteredProducts.length; j++) {
+      if (filteredProducts[j] === type) {
+        typeExists = true;
+      }
+    }
+
+    if (!typeExists) {
+      filteredProducts.push(type);
+    }
+  }
+  return filteredProducts;
+}
+
+const productTypes = filterUniqueProductTypes(store.products);
+console.log("productTypes: ", productTypes);
 
 // CART EXERCISES
 
@@ -354,7 +470,7 @@ function printReceiptMessage(items) {
     const item = items[i];
     receiptString += `${createReceiptRow(item)}\n`;
   }
-  return receiptString;
+  return `${receiptString}\n\n***TOTAL: £${countTotalPrice(cart)}***`;
 }
 
 const receiptMessage = printReceiptMessage(cart);
