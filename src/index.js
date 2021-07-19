@@ -344,9 +344,19 @@ console.log("recieptRow: ", recieptRow);
 
 // Write a function here...
 // - that takes an array as a parameter
-// - returns a string with the variosu rows on the reciept
+// - returns a string with the various rows on the reciept
 // TIP: Re-use the above function for "receiptRow"
 
-// const receiptMessage = function()
+function printReceiptMessage(items) {
+  let receiptString = `***Your items receipt***\n\n`;
 
-// console.log("receiptMessage: ", receiptMessage)
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    receiptString += `${createReceiptRow(item)}\n`;
+  }
+  return receiptString;
+}
+
+const receiptMessage = printReceiptMessage(cart);
+
+console.log("receiptMessage: ", receiptMessage);
