@@ -466,18 +466,18 @@ console.log("recieptRow: ", recieptRow);
 // TIP: Re-use the above function for "receiptRow"
 
 function printReceiptMessage(items) {
-  let receiptString = `***Your items receipt***\n\n`;
+  let receipt = `***Your items receipt***\n\n`;
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    receiptString += `${createReceiptRow(item)}\n`;
+    receipt += `${createReceiptRow(item)}\n`;
   }
-  return `${receiptString}\n\n***TOTAL: £${countTotalPrice(cart)}***`;
+  return `${receipt}\n\n***TOTAL: £${countTotalPrice(cart)}***`;
 }
 
 const receiptMessage = printReceiptMessage(cart);
 
-console.log("receiptMessage: ", receiptMessage);
+console.log(receiptMessage);
 
 /* TODO: find all in stock items (challenge.js) that need to be 
 ordered in all stores. return an object of the 
