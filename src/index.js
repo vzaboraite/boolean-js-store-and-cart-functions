@@ -504,6 +504,45 @@ const receiptMessage = printReceiptMessage(cart);
 
 console.log(receiptMessage);
 
-/* TODO: find all in stock items (challenge.js) that need to be 
+/* DONE: find all in stock items (challenge.js) that need to be 
 ordered in all stores. return an object of the 
 store and [] of items; reuse function*/
+
+function filterProductsInStoresThatNeedToBeOrdered(array, targetLocation) {
+  let storeFromTargetLocation = {};
+
+  for (let i = 0; i < array.length; i++) {
+    const store = array[i];
+    const location = store.location;
+    const products = store.products;
+
+    if (location === targetLocation) {
+      storeFromTargetLocation.location = targetLocation;
+      storeFromTargetLocation.products =
+        filterProductsThatNeedToBeOrdered(products);
+    }
+  }
+
+  return storeFromTargetLocation;
+}
+
+const productsToOrderInLondon = filterProductsInStoresThatNeedToBeOrdered(
+  stores,
+  "London"
+);
+
+console.log("productsToOrderInLondon: ", productsToOrderInLondon);
+
+const productsToOrderInBristol = filterProductsInStoresThatNeedToBeOrdered(
+  stores,
+  "Bristol"
+);
+
+console.log("productsToOrderInBristol: ", productsToOrderInBristol);
+
+const productsToOrderInManchester = filterProductsInStoresThatNeedToBeOrdered(
+  stores,
+  "Manchester"
+);
+
+console.log("productsToOrderInManchester: ", productsToOrderInManchester);
