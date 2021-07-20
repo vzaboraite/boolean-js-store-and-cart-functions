@@ -364,18 +364,23 @@ function filterUniqueProductTypes(products) {
     const product = products[i];
     const type = product.type;
 
+    // Solution #1
     /* conditional statement to set the dictionaryOfTypes{} 
     keys of "mobile", "computer", "tablet" and asign the 
     boolean values for them. These object keys will represent 
     unique product types.*/
+
     if (type === "mobile") {
-      dictionrayOfTypes.mobile = true;
+      dictionrayOfTypes["mobile"] = true;
     } else if (type === "computer") {
       dictionrayOfTypes.computer = true;
     } else if (type === "tablet") {
       dictionrayOfTypes.tablet = true;
     }
   }
+
+  // Solution #2
+  // dictionrayOfTypes[type] = true;
 
   const uniqueTypes = Object.keys(dictionrayOfTypes);
 
