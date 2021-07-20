@@ -216,6 +216,7 @@ console.log("productsThatNeedToBeOrdered: ", productsThatNeedToBeOrdered);
 // - that takes an array as a parameter
 // - returns an array of products of the type "tablet"
 
+// TODO: refactor function; filterByType
 function filterTablets(products) {
   const filteredProducts = [];
 
@@ -335,8 +336,9 @@ console.log("iPadMini: ", iPadMini);
 function filterUniqueProductTypes(products) {
   const filteredProducts = [];
 
-  for (let i = 0; i < store.products.length; i++) {
-    const product = store.products[i];
+  // TODO: use an object, google search dictionaries js
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
     const type = product.type;
 
     /* for loop to check if the product type exists */
@@ -476,3 +478,7 @@ function printReceiptMessage(items) {
 const receiptMessage = printReceiptMessage(cart);
 
 console.log("receiptMessage: ", receiptMessage);
+
+/* TODO: find all in stock items (challenge.js) that need to be 
+ordered in all stores. return an object of the 
+store and [] of items; reuse function*/
