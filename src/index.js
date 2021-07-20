@@ -333,28 +333,53 @@ console.log("iPadMini: ", iPadMini);
 // - returns an array of unique product types
 //    => ["mobile", "computer", "tablet"]
 
-function filterUniqueProductTypes(products) {
-  const filteredProducts = [];
+// function filterUniqueProductTypes(products) {
+//   const filteredProducts = [];
 
-  // TODO: use an object, google search dictionaries js
+//   for (let i = 0; i < products.length; i++) {
+//     const product = products[i];
+//     const type = product.type;
+
+//     /* for loop to check if the product type exists */
+//     // let typeExists = false;
+
+//     // for (let j = 0; j < filteredProducts.length; j++) {
+//     //   if (filteredProducts[j] === type) {
+//     //     typeExists = true;
+//     //   }
+//     // }
+
+//     // if (!typeExists) {
+//     //   filteredProducts.push(type);
+//     // }
+//   }
+//   return filteredProducts;
+// }
+
+// DONE: use an object, google search dictionaries js
+function filterUniqueProductTypes(products) {
+  let dictionrayOfTypes = null;
+
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
     const type = product.type;
 
-    /* for loop to check if the product type exists */
-    let typeExists = false;
-
-    for (let j = 0; j < filteredProducts.length; j++) {
-      if (filteredProducts[j] === type) {
-        typeExists = true;
-      }
-    }
-
-    if (!typeExists) {
-      filteredProducts.push(type);
+    /* conditional statement to set the dictionaryOfTypes{} 
+    keys of "mobile", "computer", "tablet" and asign the 
+    boolean values for them. These object keys will represent 
+    unique product types.*/
+    if (type === "mobile") {
+      dictionrayOfTypes.mobile = true;
+    } else if (type === "computer") {
+      dictionrayOfTypes.computer = true;
+    } else if (type === "tablet") {
+      dictionrayOfTypes.tablet = true;
     }
   }
-  return filteredProducts;
+
+  const uniqueTypes = Object.keys(dictionrayOfTypes);
+
+  return uniqueTypes;
 }
 
 const productTypes = filterUniqueProductTypes(store.products);
