@@ -216,22 +216,22 @@ console.log("productsThatNeedToBeOrdered: ", productsThatNeedToBeOrdered);
 // - that takes an array as a parameter
 // - returns an array of products of the type "tablet"
 
-// TODO: refactor function; filterByType
-function filterTablets(products) {
+// DONE: refactor function; filterByType
+function filterByType(products, targetType) {
   const filteredProducts = [];
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
     const type = product.type;
 
-    if (type === "tablet") {
+    if (type === targetType) {
       filteredProducts.push(product);
     }
   }
   return filteredProducts;
 }
 
-const tablets = filterTablets(store.products);
+const tablets = filterByType(store.products, "tablet");
 console.log("tablets: ", tablets);
 
 // ----- Section -----
@@ -240,21 +240,21 @@ console.log("tablets: ", tablets);
 // - that takes an array as a parameter
 // - returns an array of products of the type "computer"
 
-function filterComputers(products) {
-  const filteredProducts = [];
+// function filterComputers(products) {
+//   const filteredProducts = [];
 
-  for (let i = 0; i < products.length; i++) {
-    const product = products[i];
-    const type = product.type;
+//   for (let i = 0; i < products.length; i++) {
+//     const product = products[i];
+//     const type = product.type;
 
-    if (type === "computer") {
-      filteredProducts.push(product);
-    }
-  }
-  return filteredProducts;
-}
+//     if (type === "computer") {
+//       filteredProducts.push(product);
+//     }
+//   }
+//   return filteredProducts;
+// }
 
-const computers = filterComputers(store.products);
+const computers = filterByType(store.products, "computer");
 console.log("computers: ", computers);
 
 // ----- Section ----- **
