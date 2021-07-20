@@ -264,7 +264,7 @@ console.log("computers: ", computers);
 
 // challenge: to make reusable function (done on the session)
 function findProduct(products, productToFind) {
-  let foundProduct = {};
+  let foundProduct = null;
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
@@ -286,7 +286,7 @@ console.log("iMac: ", iMac);
 // - returns an object that represents an "iPhone 12"
 
 function findIPhone12(products) {
-  let foundProduct = {};
+  let foundProduct = null;
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
@@ -310,7 +310,7 @@ console.log("iPhone12: ", iPhone12);
 // - returns an object that represents an "iPad mini"
 
 function findIPadMini(products) {
-  let foundProduct = {};
+  let foundProduct = null;
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
