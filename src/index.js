@@ -358,7 +358,7 @@ console.log("iPadMini: ", iPadMini);
 
 // DONE: use an object, google search dictionaries js
 function filterUniqueProductTypes(products) {
-  let dictionrayOfTypes = null;
+  let dictionrayOfTypes = {};
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
