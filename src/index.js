@@ -479,9 +479,9 @@ function createReceiptRow(item) {
   const typeFirstCapital = type.charAt(0).toUpperCase() + type.slice(1);
   const price = item.product.price;
   const quantity = item.quantity;
-  const totalPrice = price * quantity;
+  const subtotal = price * quantity;
 
-  let itemInformation = `${item.product.name} | ${typeFirstCapital} - £${price} x ${quantity} || £${totalPrice}`;
+  let itemInformation = `${item.product.name} | ${typeFirstCapital} - £${price} x ${quantity} || £${subtotal}`;
 
   return itemInformation;
 }
@@ -496,13 +496,15 @@ console.log("recieptRow: ", recieptRow);
 // TIP: Re-use the above function for "receiptRow"
 
 function printReceiptMessage(items) {
-  let receipt = `***Your items receipt***\n\n`;
+  let message = `***Your items receipt***\n\n`;
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    receipt += `${createReceiptRow(item)}\n`;
+    message += `${createReceiptRow(item)}\n`;
   }
-  return `${receipt}\n\n***TOTAL: £${countTotalPrice(cart)}***`;
+  return `${message}\n\n#Amount of items: ${countItems(
+    cart
+  )}\n***TOTAL: £${countTotalPrice(cart)}***`;
 }
 
 const receiptMessage = printReceiptMessage(cart);
